@@ -96,7 +96,7 @@ executing a callback function
 once the file has been read:
 
 */
-fs.readFile('mp3Files\\mp3FileIOwn.mp3', function (err, data) {
+fs.readFile('./mp3Files/Pendulum-TheIsland.mp3', function (err, data) {
 
     // the '\P' text color change in VSCODE confused
     // me so I asked ChatGPT: 
@@ -164,7 +164,7 @@ ffprobe method to get the duration
 //       from multimedia files, such as duration, 
 //       bit rate, and codec information.
 
-ffmpeg.ffprobe('path/to/mp3/file.mp3', function (err, metadata) {
+ffmpeg.ffprobe('./mp3Files/Pendulum-TheIsland.mp3', function (err, metadata) {
                                                  //^      ^
     // The first argument ^ is the               //^      ^
     //path to the file                           //^      ^
@@ -216,7 +216,7 @@ ffmpeg.ffprobe('path/to/mp3/file.mp3', function (err, metadata) {
 
     // Split the file into two new files
 
-    ffmpeg('path/to/mp3/file.mp3')
+    ffmpeg('./mp3Files/Pendulum-TheIsland.mp3')
 
         // The above line initiates 
         //the ffmpeg process to operate on the mp3 file 
@@ -254,7 +254,7 @@ ffmpeg.ffprobe('path/to/mp3/file.mp3', function (err, metadata) {
      
         */
 
-        .output('\\mp3Files\\SplittedMP3\\firstHalf.mp3')
+        .output('./mp3Files/SplittedMP3/Pendulum_The_Island_PT1.mp3')
 
         // The above line specifies where to place the 
         // first half of the cut mp3, 
@@ -272,7 +272,7 @@ ffmpeg.ffprobe('path/to/mp3/file.mp3', function (err, metadata) {
         // callback (callback funcs) and  
         // log a successful end message below:
 
-        console.log('First half of the file has been split!');
+        console.log('First half of the MP3 file has been split!');
     })
 
         //     In the code below, the .run() method
@@ -304,7 +304,6 @@ ffmpeg.ffprobe('path/to/mp3/file.mp3', function (err, metadata) {
         //   is used under the hood by ffmpeg.js to
         //    run FFmpeg is a low-level API
         //     that does not rely on the Node.js event loop.
-        
         .run();
 });
 //   ffmpeg('path/to/mp3/file.mp3')
