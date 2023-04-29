@@ -220,9 +220,46 @@ ffmpeg.ffprobe('path/to/mp3/file.mp3', (err, metadata) => {
     // firstHalf.mp3, and will be placed inside the 
     // SplittedMP3 sub directory
     .on('end', () => {
+        // this .on() is a callbakc func takes two args
+        // the first is the event to listen for
+        // the 'end' event, after the event loop in 
+        // node finishes with this 'end' event it will
+        // callback (callback funcs) and  
+        // log a successful end message below:
       console.log('First half of the file has been split!');
-    })
-    .run();
+  })
+//     In the code below, the .run() method
+//      is used to start the FFmpeg process
+//       and execute the commands that have 
+//       been set up with the previous methods 
+//       (setStartTime, setDuration, output, etc.).
+      
+//       When you call .run(), FFmpeg will start
+//        the process of reading the input file, 
+//        applying any filters or effects specified 
+//        in the command, and writing the output file.
+
+// The .run() method does not block 
+// the Node.js event loop, meaning that other code
+//  can continue to run while FFmpeg is
+//   processing the file in the background. 
+  
+//   When FFmpeg finishes processing the file,
+//    it will emit an 'end' event,
+//     which can be captured using the .on()
+//      method with a callback function.
+
+// The .run() method doe
+// s not have a specific stage in the Node.js event
+//  loop, as it simply spawns a new child process 
+//  to execute FFmpeg commands.
+ 
+//  The child_process.spawn() method that
+//   is used under the hood by ffmpeg.js to
+//    run FFmpeg is a low-level API
+//     that does not rely on the Node.js event loop.
+   
+.run();
 
   ffmpeg('path/to/mp3/file.mp3')
     .setStartTime(duration / 2)
