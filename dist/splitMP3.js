@@ -55,6 +55,10 @@ like this, you get a string value
 
 ffmpeg.setFfmpegPath(ffmpeg_static);
 
+const ffprobePath = require('ffprobe-static').path;
+const ffprobe = require('child_process').spawn(ffprobePath, ['-i', 'my-video.mp4', '-show_format', '-show_streams']);
+
+
 //  Finally, this last line:
 /// the setFfmpegPath
 //   method sets the path to the 
@@ -96,7 +100,7 @@ executing a callback function
 once the file has been read:
 
 */
-fs.readFile('./mp3Files/Pendulum-TheIsland.mp3', function (err, data) {
+fs.readFile('C:\\Users\\lrsor\\Desktop\\PROGRAMMING\\MP3Splitter\\mp3Files\\Pendulum-TheIsland.mp3', function (err, data) {
 
     // the '\P' text color change in VSCODE confused
     // me so I asked ChatGPT: 
@@ -164,7 +168,7 @@ ffprobe method to get the duration
 //       from multimedia files, such as duration, 
 //       bit rate, and codec information.
 
-ffmpeg.ffprobe('./mp3Files/Pendulum-TheIsland.mp3', function (err, metadata) {
+ffmpeg.ffprobe('C:\\Users\\lrsor\\Desktop\\PROGRAMMING\\MP3Splitter\\mp3Files\\Pendulum-TheIsland.mp3', function (err, metadata) {
                                                  //^      ^
     // The first argument ^ is the               //^      ^
     //path to the file                           //^      ^
@@ -216,7 +220,7 @@ ffmpeg.ffprobe('./mp3Files/Pendulum-TheIsland.mp3', function (err, metadata) {
 
     // Split the file into two new files
 
-    ffmpeg('./mp3Files/Pendulum-TheIsland.mp3')
+    ffmpeg('C:\\Users\\lrsor\\Desktop\\PROGRAMMING\\MP3Splitter\\mp3Files\\Pendulum-TheIsland.mp3')
 
         // The above line initiates 
         //the ffmpeg process to operate on the mp3 file 
@@ -254,7 +258,7 @@ ffmpeg.ffprobe('./mp3Files/Pendulum-TheIsland.mp3', function (err, metadata) {
      
         */
 
-        .output('./mp3Files/SplittedMP3/Pendulum_The_Island_PT1.mp3')
+        .output('C:\\Users\\lrsor\\Desktop\\PROGRAMMING\\MP3Splitter\\mp3Files\\SplittedMP3\\Pendulum_The_Island_PT1.mp3')
 
         // The above line specifies where to place the 
         // first half of the cut mp3, 
