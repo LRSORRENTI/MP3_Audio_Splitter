@@ -130,4 +130,47 @@ if (err) throw err;
     // Continue with splitting the file
   });
 
- 
+  
+// Split the MP3 File
+/*
+To split the MP3 file in half, we'll 
+use the fluent-ffmpeg package's 
+ffprobe method to get the duration
+ of the file and then use the ffmpeg
+ method to split the file into two new files.
+*/
+
+// Get the duration of the file using ffprobe
+
+// Use ffmpeg.ffprobe to probe an mp3 file for its metadata
+ffmpeg.ffprobe('path/to/mp3/file.mp3', (err, metadata) => {
+    // The first argument ^ is the path to the file
+    // The second argument (err, metadata) 
+    // is a callback function that will be called once
+    //  the metadata is obtained
+  if (err) throw err;
+// Same thing, if error does occur, 
+// the throw statement is used to 
+// throw an error in JavaScript.
+
+// When an error is thrown, 
+// it creates an error object
+//  that contains information 
+//  about the error such as 
+//  its type, message, and 
+//  stack trace. The error 
+//  object can be caught and 
+//  handled by surrounding 
+//  code using a try...catch block.
+
+// In the specific case of if (err) throw err;,
+//  it is checking if the err variable is
+//   truthy (i.e., contains an error object)
+//    and throwing it if it does.
+   
+//    This is a common pattern for handling errors
+
+ // Get the duration of the mp3 file from the metadata
+  // The duration is in seconds 
+  const duration = metadata.format.duration;
+
