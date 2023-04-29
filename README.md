@@ -1,6 +1,6 @@
 # MP3 Splitter
 
-## This will split an MP3 file at a specified point and return a new MP3 file
+## This tool will split an MP3 file at a specified point and return a new MP3 file
 
 **Step 1: Install Required Packages**
 
