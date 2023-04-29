@@ -93,7 +93,7 @@ executing a callback function
 once the file has been read:
 
 */
-fs.readFile('mp3Files\mp3FileIOwn.mp3', (err, data) => {
+fs.readFile('mp3Files\\mp3FileIOwn.mp3', (err, data) => {
     // the '\P' text color change in VSCODE confused
     // me so I asked ChatGPT: 
 // No, the color of the text in 
@@ -106,6 +106,9 @@ fs.readFile('mp3Files\mp3FileIOwn.mp3', (err, data) => {
 //   characters and in the right order, it should
 //  work fine with the fs.readFile function.
 
+
+// ^^^^ THE ABOVE IS NOT TRUE, SHOULD USE FORWARD 
+// SLASHES, OR TWO \\ IN WINDOWS FOR PATHS
 
 /* 
 
@@ -172,5 +175,60 @@ ffmpeg.ffprobe('path/to/mp3/file.mp3', (err, metadata) => {
 
  // Get the duration of the mp3 file from the metadata
   // The duration is in seconds 
+
+
+// In this code, if there is an error
+//  while obtaining the metadata,
+//   the error is thrown using the 
+//   throw statement.
+  
+//   Otherwise, the duration 
+//   of the mp3 file is obtained
+//    from the metadata and stored 
+//    in the duration variable below
+
   const duration = metadata.format.duration;
 
+
+  // Split the file into two new files
+  ffmpeg('path/to/mp3/file.mp3')
+
+  // The above line initiates 
+  //the ffmpeg process to operate on the mp3 file 
+  //located at the specified path.
+
+    // .setStartTime(0)
+    // .setDuration(duration / 2)
+
+    // Above will split the mp3 in half, 
+    // the mp3 I'm splitting will use 
+    // specific times to cut into two halves:
+
+    .setStartTime(0)
+    .setDuration(5*60 + 43) // 5 minutes and 43 seconds
+
+   /*
+   The above two lines set the start time at 0, 
+   and duration of the output file. 
+
+   */
+
+    .output('mp3Files\\SplittedMP3\\firstHalf.mp3')
+    // The above line specifies where to place the 
+    // first half, and the new name of it, in this 
+    // case the first split will have a name of 
+    // firstHalf.mp3, and will be placed inside the 
+    // SplittedMP3 sub directory
+    .on('end', () => {
+      console.log('First half of the file has been split!');
+    })
+    .run();
+
+  ffmpeg('path/to/mp3/file.mp3')
+    .setStartTime(duration / 2)
+    .setDuration(duration / 2)
+    .output('path/to/new/file2.mp3')
+    .on('end', () => {
+      console.log('Second half of the file has been split!');
+    })
+    .run();
