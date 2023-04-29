@@ -38,7 +38,15 @@ ffmpeg.setFfmpegPath(ffmpeg_static);
 
 The first line imports the fs module that we'll use to read and write files. The second line imports the fluent-ffmpeg package, and the third line imports the ffmpeg-static package that includes the ffmpeg binary. Finally, the setFfmpegPath method sets the path to the ffmpeg binary that we just installed.
 
-**Step 3: Read the MP3 File**:
+**Step 3. Create directories to house MP3**:
+
+These can be named or structured however you like, just update the path names in splitMP3.js
+
+Create empty folder in root directory to house MP3 Files /mp3Files, add MP3 file
+
+Create empty folder inside of /mp3Files/SplittedMP3/ to house the new MP3
+
+**Step 4: Read the MP3 File**:
 
 The first step is to read the MP3 file using the fs module's readFile method. This method takes the path to the file and a callback function that is called when the file is read. In the callback function, we'll check for any errors and then proceed with splitting the file.
 
@@ -52,7 +60,7 @@ if (err) throw err;
 
 ```
 
-**Step 4: Split the MP3 File**
+**Step 5: Split the MP3 File**
 
 To split the MP3 file in half, we'll use the fluent-ffmpeg package's ffprobe method to get the duration of the file and then use the ffmpeg method to split the file into two new files.
 
@@ -91,7 +99,7 @@ The ffprobe method returns metadata about the file, including its duration, whic
 
 Then we use the ffmpeg method to split the file into two new files. We first call the output method to specify the path and filename for the new file, then we use the setStartTime and setDuration methods to specify the start time and duration of each file. Finally, we call the run method to start the splitting process.
 
-**Step 5: Run the Program**
+**Step 6: Run the Program**
 
 1. Update file paths for the desired MP3 snip
 
