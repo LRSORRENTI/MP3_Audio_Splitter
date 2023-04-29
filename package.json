@@ -1,0 +1,17 @@
+{
+  "name": "mp3splitter",
+  "version": "1.0.0",
+  "description": "**Step 1: Install Required Packages**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ffmpeg-static": "^5.1.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "^0.0.1-security"
+  }
+}
