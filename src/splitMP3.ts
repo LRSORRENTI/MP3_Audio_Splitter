@@ -49,6 +49,8 @@ like this, you get a string value
   the fluent-ffmpeg library.
 */
 
+// console.log(ffmpeg_static)
+
 
 
 ffmpeg.setFfmpegPath(ffmpeg_static);
@@ -146,6 +148,20 @@ ffprobe method to get the duration
 // Get the duration of the file using ffprobe
 
 // Use ffmpeg.ffprobe to probe an mp3 file for its metadata
+
+// ffprobe is a method provided by the
+//  ffmpeg module in Node.js. 
+ 
+//  The ffmpeg module is a wrapper around
+//   the FFmpeg command-line tool,
+//    and it provides an interface to
+//     execute FFmpeg commands and parse
+//      their output. 
+     
+//      The ffprobe method specifically
+//       is used to extract metadata 
+//       from multimedia files, such as duration, 
+//       bit rate, and codec information.
 ffmpeg.ffprobe('path/to/mp3/file.mp3', (err, metadata) => {
     // The first argument ^ is the path to the file
     // The second argument (err, metadata) 
@@ -260,12 +276,12 @@ ffmpeg.ffprobe('path/to/mp3/file.mp3', (err, metadata) => {
 //     that does not rely on the Node.js event loop.
    
 .run();
-
-  ffmpeg('path/to/mp3/file.mp3')
-    .setStartTime(duration / 2)
-    .setDuration(duration / 2)
-    .output('path/to/new/file2.mp3')
-    .on('end', () => {
-      console.log('Second half of the file has been split!');
-    })
-    .run();
+});
+//   ffmpeg('path/to/mp3/file.mp3')
+//     .setStartTime(duration / 2)
+//     .setDuration(duration / 2)
+//     .output('path/to/new/file2.mp3')
+//     .on('end', () => {
+//       console.log('Second half of the file has been split!');
+//     })
+//     .run();
